@@ -1,0 +1,24 @@
+{
+  "name": "sockchat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b2bwwc/SockChat.git"
+  },
+  "keywords": [
+    "React",
+    "Websockets",
+    "Redux"
+  ],
+  "author": "Jeffrey Penkar & Zach Okuhara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/b2bwwc/SockChat/issues"
+  },
+  "homepage": "https://github.com/b2bwwc/SockChat#readme"
+}
