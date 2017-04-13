@@ -3,6 +3,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import HeaderBar from './Components/HeaderBar'
+import UserList from './Components/UserList'
 const muiTheme = getMuiTheme();
 
 class App extends React.Component {
@@ -10,7 +11,9 @@ class App extends React.Component {
     return (
       <div>
         <HeaderBar />
-        <h1>I trusted You!</h1>
+        <div style={{width:"20vw"}}>
+          <UserList />
+        </div>
       </div>
     )
   }
