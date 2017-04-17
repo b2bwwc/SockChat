@@ -4,6 +4,8 @@ import HeaderBar from './Components/HeaderBar';
 import UserList from './Components/UserList';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+require('../Style/base.scss');
+
 const muiTheme = getMuiTheme();
 
 import firebase from 'firebase';

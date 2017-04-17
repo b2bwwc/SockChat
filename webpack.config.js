@@ -9,26 +9,22 @@ module.exports = {
     filename: './dist/bundle.js'
   },
   module: {
-    loaders: [
-      {
-        test: /\.jpg$/,
-        loader: 'file-loader',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.scss$/,
-        loaders: ['style', 'css', 'sass'],
-        exclude: /node_modules/
-      },
-      {
-        test: /.jsx?$/,
+    rules: [{
+      test: /\.scss$/,
+      use: [
+        "style-loader",
+        "css-loader",
+        "sass-loader"
+      ]
+    },{
+      test: /\.js$/,
+      exclude: /(node_modules|bower_components)/,
+      use: {
         loader: 'babel-loader',
-        exclude: /node_modules/,
         query: {
-          presets: ['es2015', 'stage-0', 'react']
-        }
+               presets: ['react', 'es2015', 'stage-0']
+        },
       }
-    ]
-  },
-  watch: true
-};
+    }]
+  }
+}
