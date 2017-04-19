@@ -21,6 +21,7 @@ const Style = {
     container: {
       display:'inline-flex',
       width:'100vw',
+      height:'calc(100vh - 64px)',
     },
     menubar: {
       display:'inline-flex',
@@ -50,7 +51,7 @@ class App extends React.Component {
             <UserList />
           </div>
           <div style={Style.content.textarea}>
-            <Body />
+            <Body firebase={firebase.database().ref()} />
           </div>
         </div>
       </div>

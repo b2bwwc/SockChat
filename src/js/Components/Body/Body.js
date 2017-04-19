@@ -3,12 +3,14 @@ import {sendLine, sendStatus} from '../../API'
 
 class Body extends Component {
   static propTypes = {
-
+    firebase: PropTypes.object,
   }
 
   line(){
-    sendLine();
+    let user = 'JSP', message = 'message', {firebase} = this.props;
+    sendLine({firebase, user, message});
   }
+
   status(){
     sendStatus();
   }
@@ -25,7 +27,7 @@ class Body extends Component {
 }
 
 Body.defaultProps = {
-
+  firebase: {},
 }
 
 export default Body
