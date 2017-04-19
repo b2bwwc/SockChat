@@ -6,15 +6,16 @@ class HeaderBar extends React.Component {
     super(props);
     this._tap = this._tap.bind(this);
   }
-  _tap() {
-    console.log('stop touching me!');
+
+  _tap(){
+    console.log('stuff');
   }
 
   render() {
     return (
       <AppBar
+        onClick={this._tap}
         title={<span>Title</span>}
-        onTitleTouchTap={this._tap}
         iconClassNameRight="muidocs-icon-navigation-expand-more">
       </AppBar>
     )
