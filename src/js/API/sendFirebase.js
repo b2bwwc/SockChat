@@ -1,9 +1,9 @@
 export const sendLine = ({firebase, user, message})=>{
   var date = (new Date()).toString();
-  console.log(user, message, date);
   firebase.child('messages').push({user, message, date});
 }
 
-export const sendStatus = () => {
-  console.log('sendstatus');
+export const sendStatus = ({firebase, user, status}) => {
+  var date = (new Date()).toString();
+  firebase.child(`users/${user}/status`).push({status, date});
 }

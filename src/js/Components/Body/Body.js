@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react'
+import TextEntry from './TextEntry';
 import {sendLine, sendStatus} from '../../API'
 
 class Body extends Component {
@@ -6,23 +7,38 @@ class Body extends Component {
     firebase: PropTypes.object,
   }
 
-  line(){
-    let user = 'JSP', message = 'message', {firebase} = this.props;
-    sendLine({firebase, user, message});
-  }
+  constructor(props){
+    super(props);
+    this.state = {
+      status: true,
+      lines: []
+    }
 
-  status(){
-    sendStatus();
+    this._addLines = this._addLines.bind(this);
+    this._listLines = this._listLines.bind(this);
   }
 
   render() {
     return (
-      <div>
-        <span onClick={::this.line}>line</span>
-        Body
-        <span onClick={::this.status}>status</span>
+      <div className='body-component'>
+        { this._listLines() }
+        <TextEntry addLine={this._addLines}/>
       </div>
     )
+  }
+
+  _listLines() {
+    let {lines} = this.state, arr = [];
+    for(var i = 0; i < lines.length; i++){
+      arr.push(<span key={i}>{lines[i]}</span>)
+    }
+    return arr;
+  }
+
+  _addLines(newLine) {
+    let {lines} = this.state;
+    lines.push(newLine);
+    this.setState({lines})
   }
 }
 
