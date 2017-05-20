@@ -3,7 +3,7 @@ export const sendLine = ({firebase, user, message})=>{
   firebase.child('messages').push({user, message, date});
 }
 
-export const sendStatus = ({firebase, user, status}) => {
+export const sendStatus = ({firebase, user, status, value}) => {
   var date = (new Date()).toString();
-  firebase.child(`users/${user}/status`).push({status, date});
+  firebase.child(`users/${user}/status`).set({status, value});
 }

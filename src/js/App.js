@@ -36,10 +36,19 @@ const Style = {
 }
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      messages: [],
+      users:{},
+      status:'',
+    }
+    this._receiveNew = this._receiveNew.bind(this);
+  }
   componentWillMount() {
     FB_DB.on('value', (snap) => {
-      console.log(snap.val());
-    })
+      this._receiveNew(snap.val());
+    });
   }
 
   render() {
@@ -51,11 +60,20 @@ class App extends React.Component {
             <UserList />
           </div>
           <div style={Style.content.textarea}>
-            <Body firebase={firebase.database().ref()} />
+            <Body firebase={firebase.database().ref()} messages={this.state.messages}/>
           </div>
         </div>
       </div>
-    )
+    );
+  }
+
+  _receiveNew(snapshot) {
+    let messages = [];
+    for(let msg in snapshot.messages){
+      messages.push(snapshot.messages[msg]);
+    }
+    messages.sort((ms1, ms2)=>(ms1.date - ms2.date));
+    this.setState(Object.assign({}, snapshot, {messages}));
   }
 }
 

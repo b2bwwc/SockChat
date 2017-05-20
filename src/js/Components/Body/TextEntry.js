@@ -4,6 +4,9 @@ import {TextField} from 'material-ui'
 class TextEntry extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      text:'',
+    }
     this._typing = this._typing.bind(this);
   }
 
@@ -11,25 +14,27 @@ class TextEntry extends Component {
     return (
       <div className='text-entry-area'>
         <TextField
+          ref={(ta)=>(this._ta = ta)}
           hintText='Type something here jerk...'
           floatingLabelText='Entry field...'
           multiLine={true}
           fullWidth={true}
           rows={2}
+          value={this.state.text}
           onChange={this._typing}
           />
       </div>
     )
   }
 
-  _typing(event, val) {
-    if(val.indexOf('\n') + 1) {
-      console.log(27)
-      this.props.addLine(val);
+  _typing(event, text) {
+    if(text.indexOf('\n') + 1) {
+      text = text.replace('\n','');
+      this.props.addLine(text);
+      this.setState({text:''});
     } else {
-      console.log(30)
+      this.setState({text});
     }
-    // console.log(event.nativeEvent, val);
   }
 }
 
