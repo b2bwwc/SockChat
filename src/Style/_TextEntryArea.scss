@@ -4,5 +4,36 @@
   bottom: 4px;
   border-radius: 5px;
   margin-left: 1vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  font-size: 1.25rem;
+
   background-color: whitesmoke;
+  border-radius: 5px;
+  border: 2px solid black;
+
+  .text-entry-button{
+    padding: 4px;
+    border: 0px;
+    background: transparent;
+    font-size: 1.25rem;
+    width: 65px;
+
+    &.plus {
+      border-right: 1px solid black
+    }
+    &.send {
+      border-left: 1px solid black
+    }
+  }
+
+  .primary-text-entry-area {
+    border: 0px;
+    font-size: 1.25rem;
+    background: white;
+    width: calc(100% - 140px);
+  }
 }

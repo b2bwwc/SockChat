@@ -13,21 +13,19 @@ class TextEntry extends Component {
   render() {
     return (
       <div className='text-entry-area'>
-        <TextField
-          ref={(ta)=>(this._ta = ta)}
-          hintText='Type something here jerk...'
-          floatingLabelText='Entry field...'
-          multiLine={true}
-          fullWidth={true}
-          rows={2}
+        <button className='text-entry-button plus'>+</button>
+        <input
           value={this.state.text}
+          placeholder='Say something...'
           onChange={this._typing}
-          />
+          className='primary-text-entry-area'/>
+        <button className='text-entry-button send'>Send</button>
       </div>
     )
   }
 
-  _typing(event, text) {
+  _typing(event) {
+    let text = event.target.value;
     if(text.indexOf('\n') + 1) {
       text = text.replace('\n','');
       this.props.addLine(text);
